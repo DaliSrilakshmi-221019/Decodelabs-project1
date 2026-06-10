@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlacementPro | Professional Student Placement Predictor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Placement<span>Pro</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Analysis</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#" class="btn-contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-label">Mode</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>Success Metrics</h3>
+                <p>Learn what recruiters are looking for in the 2025 job market.</p>
+                <ul class="tips-list">
+                    <li>Core Technical Skills (40%)</li>
+                    <li>Interpersonal Communication (25%)</li>
+                    <li>Project Experience (20%)</li>
+                    <li>Internships (15%)</li>
+                </ul>
+            </div>
+            <div class="sidebar-card promo">
+                <p>Join the 500+ students who secured placements last month.</p>
+                <button class="secondary-btn">Read Case Studies</button>
+            </div>
+        </aside>
+
+        <article class="prediction-module">
+            <section class="hero-section">
+                <h2>Predict Your Future</h2>
+                <p>Use our data-driven engine to estimate your placement probability based on your academic and technical profile.</p>
+            </section>
+
+            <section class="form-container">
+                <form id="predictionForm" class="placement-form">
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cgpa">Current CGPA</label>
+                            <input type="number" id="cgpa" step="0.01" min="0" max="10" placeholder="0.00 - 10.0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="iqScore">Aptitude/IQ Score</label>
+                            <input type="number" id="iqScore" min="0" max="200" placeholder="Expected Score" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="internships">Internships Completed</label>
+                            <input type="number" id="internships" min="0" max="10" placeholder="Count" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="major">Primary Domain</label>
+                            <select id="major" required>
+                                <option value="" disabled selected>Select your domain</option>
+                                <option value="cs">Computer Science & IT</option>
+                                <option value="mechanical">Mechanical Engineering</option>
+                                <option value="electrical">Electrical & Electronics</option>
+                                <option value="data">Data Science & AI</option>
+                                <option value="business">Business & Management</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="predictBtn" class="primary-btn">Analyze Placement Potential</button>
+                </form>
+            </section>
+
+            <!-- Result Section (Hidden initially) -->
+            <section id="resultSection" class="result-section hidden">
+                <div class="result-card">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" id="resultCircle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage" id="resultValue">0%</text>
+                        </svg>
+                    </div>
+                    <div class="result-text">
+                        <h3 id="resultTitle">Analyzing...</h3>
+                        <p id="resultMessage">Please wait while we process your profile data.</p>
+                        <button type="button" id="resetBtn" class="outline-btn">Re-run Analysis</button>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>PlacementPro</h3>
+                <p>Empowering students with data-driven career insights. Built for DecodeLabs Industrial Training.</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Research Papers</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p>📍 Greater Lucknow, India</p>
+                <p>✉ decodelabs.tech@gmail.com</p>
+                <p>📞 +91 89330 06408</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DecodeLabs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

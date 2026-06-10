@@ -1,0 +1,468 @@
+/* 
+   Project: Student Placement Predictor
+   Theme: 2025 Aesthetics (Mocha Mousse & Ethereal Blue)
+   Strategy: Mobile-First, Semantic, Grid/Flexbox
+*/
+
+:root {
+    /* Light Mode (Defaults) */
+    --mocha: #A5856F;
+    --mocha-dark: #7D6352;
+    --blue: #A0D4E0;
+    --bg-primary: #F2F0EA;     /* Moonlit Grey */
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --border: #e1e1e1;
+    
+    /* Typography */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Spacing */
+    --gap-base: clamp(1rem, 3vw, 2rem);
+}
+
+[data-theme="dark"] {
+    --mocha: #BCA08B;          /* Lighter mocha for dark mode */
+    --mocha-dark: #F2F0EA;
+    --blue: #A0D4E0;
+    --bg-primary: #1A1A1A;     /* Dark Deep Grey */
+    --bg-card: #2D2D2D;        /* Card elevation */
+    --text-main: #F2F0EA;
+    --text-muted: #BBBBBB;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --border: #444444;
+}
+
+/* 1. Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--mocha-dark);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* 2. Header Layout (Flexbox) */
+.main-header {
+    background: var(--bg-card);
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.main-nav ul {
+    display: none; /* Mobile hidden by default */
+}
+
+.btn-contact {
+    background: var(--mocha);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main-nav ul.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    padding: 2rem;
+    box-shadow: 0 10px 30px var(--shadow);
+    gap: 1.5rem;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--mocha);
+    transition: 0.3s;
+}
+
+/* 3. Main Layout (CSS Grid) */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: Single column */
+    gap: var(--gap-base);
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow);
+    border-left: 5px solid var(--blue);
+    transition: background 0.3s ease;
+}
+
+.sidebar-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.tips-list li {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tips-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+}
+
+/* Articles / Form */
+.prediction-module {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px var(--shadow);
+    transition: background 0.3s ease;
+}
+
+.hero-section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero-section h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+/* 4. Form Styles */
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--mocha-dark);
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-main);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--mocha);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.primary-btn:hover {
+    background: var(--mocha-dark);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* 5. Result Section */
+.result-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px dashed #eee;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.score-circle {
+    width: 150px;
+}
+
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke: var(--blue);
+    transition: stroke-dasharray 1s ease-in-out;
+}
+
+.percentage {
+    fill: var(--mocha-dark);
+    font-family: var(--font-heading);
+    font-size: 0.5rem;
+    text-anchor: middle;
+    font-weight: 700;
+}
+
+.outline-btn {
+    background: none;
+    border: 2px solid var(--mocha);
+    color: var(--mocha);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* 8. Theme Switch Styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 9. Footer Layout */
+.main-footer {
+    background: var(--mocha-dark);
+    color: var(--bg-primary);
+    padding: 3rem 1.5rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.footer-about h3 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--blue);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+}
+
+/* 7. Responsive Breakpoints (Tablet & Desktop) */
+
+/* Tablet: 768px */
+@media screen and (min-width: 768px) {
+    .input-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .full-width {
+        grid-column: span 2;
+    }
+
+    .main-nav ul {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .main-nav ul a {
+        color: var(--mocha-dark);
+        font-weight: 600;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .result-card {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+    }
+}
+
+/* Desktop: 1024px */
+@media screen and (min-width: 1024px) {
+    .main-content {
+        grid-template-columns: 300px 1fr; /* Strict 2D Floor Plan */
+        align-items: start;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1.5fr;
+    }
+}
