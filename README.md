@@ -50,3 +50,7 @@ Mojala Dali Srilakshmi
 
 ## 📌 Note
 This project was created as part of an internship assignment to demonstrate responsive web design skills.
+
+
+****-----Backend part project2----------*****
+Developed backend APIs for a Student Placement Prediction System using Node.js, Express, and MongoDB. Implemented GET and POST endpoints, input validation, prediction logic, and database integration.
